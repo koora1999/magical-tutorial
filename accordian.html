@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .accordian{
+            max-width: 600px;
+        }
+        .accordian .contentbox{
+            position: relative;
+
+        }
+        .accordian .contentbox .label{
+            position: relative;
+            color:white;
+            background-color: aquamarine;
+            cursor: pointer;
+            padding:10px;
+        }
+        .accordian .contentbox .text{
+            position: relative;
+            background-color: rgb(246, 250, 215);
+            height: 0;
+            overflow-y: auto;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .accordian .contentbox .label::before{
+            content: "+";
+            position: absolute;
+            top:50%;
+            right:10%;
+            transform: translateY(-50%);
+
+        }
+        .accordian .contentbox.active .label::before{
+            content: "-";
+        }
+        .accordian .contentbox.active .text{
+            height:200px;
+            padding:10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="accordian">
+    <div class="contentbox">
+        <div class="label">html</div>
+        <div class="text">
+            <p>
+                text
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    let accordian = document.getElementsByClassName("contentbox");
+    for(let i=0;i<accordian.length;i++){
+        accordian[i].addEventListener('click',function(){
+            this.classList.toggle('active')
+        })
+    }
+</script>
+</body>
+</html>
